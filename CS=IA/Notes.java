@@ -4,11 +4,12 @@ import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Notepad extends KeyAdapter implements ActionListener, KeyListener{
-	static int active = 0;
+public class Notes extends KeyAdapter implements ActionListener, KeyListener{
+	
 	static int fSize = 17;
 
-
+	FileWriter writer;
+	
 	JFrame baseFrame;
 	JMenuBar menuBar;
 	JMenu file, edit, format, view;
@@ -36,9 +37,10 @@ public class Notepad extends KeyAdapter implements ActionListener, KeyListener{
 	//JScrollBar vScrollBar;
 	//JScrollBar hScrollBar;
 
-	Notepad(){
+	Notes(){
 		chooser = new JFileChooser();
 		reader = new FileReader();
+		writer = new FileWriter();
 
 		baseFrame = new JFrame("New Document");
 		baseFont = new Font("Arial",Font.PLAIN,17);
@@ -144,12 +146,7 @@ public class Notepad extends KeyAdapter implements ActionListener, KeyListener{
 
 	public void saveFile(){
 		try{
-			FileOutputStream saveFile = new FileOutputStream(fileName +".txt");
-			String s = mainText.getText();
-			for(int i = 0;i<s.length();i++){
-				saveFile.write(s.charAt(i));
-			}
-			saveFile.close();
+			writer.write
 		}
 		catch (Exception e){
 			System.out.println("Something went wrong.");
